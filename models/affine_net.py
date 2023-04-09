@@ -5,7 +5,6 @@ import torchvision
 from torch.nn import functional as F
 import numpy as np
 from models.utils import ScaledTanH, ScalingAF
-from models.flash_pytorch import FLASHTransformer
 
 
 class AffineNet(nn.Module):
@@ -606,7 +605,6 @@ if __name__ == '__main__':
     # fixed = torch.randn(size=(2, 1, 128, 128, 128)).float()
     # moving = torch.randn(size=(2, 1, 128, 128, 128)).float()
     model = RegistrationNet(depth=6, ms=False, scale=False)
-    # model = FlashReg(in_dim=2, depth=5)
     print(model)
     total = sum([para.nelement() for para in model.parameters()])
     print("Numberof parameter: % .2fK" % (total / 1024))
